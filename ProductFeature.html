@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Features - Alexandria</title>
+
+    <style>
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            border: 1px solid black;
+            background-color: white;
+            padding: 25px;
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            border: 1px solid black;
+            border-radius: 50%;
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .feature h2 {
+            margin: 0 0 10px;
+        }
+
+        .feature p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .feature {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <b>Logo</b>
+
+        <input type="search" placeholder="Search">
+
+        <select name="genre">
+            <option value="">Genre</option>
+            <option value="Math">Math</option>
+            <option value="Physics">Science</option>
+            <option value="History">History</option>
+            <option value="Chemistry">Chemistry</option>
+            <option value="Biology">Biology</option>
+            <option value="English">English</option>
+        </select>
+
+        <a href="ottawa.html">Ottawa</a>
+    </nav>
+
+    <h1>Product Features</h1>
+
+    <main>
+        <section class="feature">
+            <div class="icon">🚚</div>
+            <div>
+                <h2>Here's How Shipping Works</h2>
+                <p>Before buying a book, confirm the shipping cost, delivery method,
+                    and estimated arrival time with the seller.</p>
+            </div>
+        </section>
+
+        <section class="feature">
+            <div class="icon">👥</div>
+            <div>
+                <h2>How We Connect You</h2>
+                <p>Alexandria connects people who want to buy and sell used books
+                    and textbooks. Buyers can browse by genre and price, and
+                    sellers can list books they no longer need.</p>
+            </div>
+        </section>
+
+        <section class="feature">
+            <div class="icon">🔒</div>
+            <div>
+                <h2>How to Stay Secure</h2>
+                <p>Use a strong password and keep your login details private.
+                    Check the book description and seller details before buying.
+                    Never share your password or verification codes.</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
