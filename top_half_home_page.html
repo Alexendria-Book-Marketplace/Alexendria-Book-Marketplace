@@ -1,0 +1,63 @@
+<<!DOCTYPE html>
+<!-- top half of home page completed by Nigel Powell - 300541202 -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alexandria - Used book marketplace</title>
+</head>
+<body>
+
+  <header>
+    <nav aria-label="Main">
+      <a href="top_half_home_page.html"><strong>Alexandria</strong></a>
+
+      <!-- search.html is a placeholder for now -->
+      <form action="search.html" method="get">
+        <label for="q">Search</label>
+        <input type="search" id="q" name="q" placeholder="Search titles, authors, ISBN">
+
+        <label for="genre">Genre</label>
+        <select id="genre" name="genre">
+          <option>All genres</option>
+          <option>Fiction</option>
+          <option>Mystery</option>
+          <option>Science fiction</option>
+          <option>History</option>
+          <option>Biography</option>
+          <option>Children</option>
+        </select>
+
+        <label for="location">Location</label>
+        <select id="location" name="location">
+          <option>Ottawa</option>
+          <option>Gatineau</option>
+          <option>Kanata</option>
+          <option>Orléans</option>
+        </select>
+
+        <!-- Doesn't work, see above -->
+        <button type="submit">Search</button>
+      </form>
+
+      <!-- Placeholder for an account creation page -->
+      <a href="account.html">Account</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- The table's background attribute puts the photo behind the text -->
+    <table width="100%" height="500" background="generic_library.jpg">
+      <tr>
+        <td align="center" valign="middle">
+          <h1><font color="white">Used books, from readers near you</font></h1>
+          <p><font color="white">Buy and sell secondhand books. Search by title, author or genre, and message the seller directly.</font></p>
+          <!-- Placeholder for the actual marketplace browser -->
+          <p><a href="marketplace.html"><font color="white">Browse books</font></a></p>
+        </td>
+      </tr>
+    </table>
+  </main>
+
+</body>
+</html>
