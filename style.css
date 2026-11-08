@@ -1,0 +1,222 @@
+/* ===== Palette ===== */
+:root {
+  --creme:  #F6F2EA;  /* fond de page */
+  --or:     #8A7042;  /* accent : bordures, détails */
+  --encre:  #1B2122;  /* texte + en-tête */
+  --marine: #22344F;  /* bandeau, titres */
+
+  --font-title: "Young Serif", Georgia, "Times New Roman", serif;
+  --font-text:  "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* ===== Base ===== */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--creme);
+  color: var(--encre);
+  font-family: var(--font-text);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+img { max-width: 100%; height: auto; }
+
+:focus-visible {
+  outline: 3px solid var(--or);
+  outline-offset: 3px;
+}
+
+/* ===== En-tête ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: .75rem clamp(1rem, 4vw, 2.5rem);
+  background: var(--creme);
+  color: var(--encre);
+  border-bottom: 3px solid var(--or);
+}
+
+.logo { display: flex; }
+/* Le logo est clair : on le fonce pour qu'il se voie sur le fond crème */
+.logo img { filter: brightness(0); }
+
+.search {
+  flex: 1 1 240px;
+  max-width: 420px;
+  margin-left: auto;
+}
+
+.search input,
+.site-header select,
+.location-btn {
+  padding: .55rem 1rem;
+  border: 1.5px solid var(--or);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--encre);
+  font: inherit;
+  font-size: .95rem;
+}
+
+.search input { width: 100%; }
+.search input::placeholder { color: rgba(27, 33, 34, .6); }
+
+/* Les options du menu déroulant gardent un fond lisible */
+.site-header select option { background: var(--creme); color: var(--encre); }
+
+.location-btn { cursor: pointer; }
+.location-btn:hover,
+.site-header select:hover { background: rgba(138, 112, 66, .18); }
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+  color: var(--marine);
+}
+.profile img { border-radius: 50%; }
+
+/* ===== Bandeau (fond différent du reste de la page) ===== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  min-height: clamp(260px, 40vh, 400px);
+  padding: 5.5rem 1.5rem;
+  background: var(--marine);
+  color: var(--creme);
+  text-align: center;
+}
+
+.hero h1 {
+  position: relative;
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 7vw, 4.5rem);
+  line-height: 1.05;
+  text-transform: uppercase;   /* le texte reste « Meet the team » dans le HTML */
+  letter-spacing: .02em;
+}
+
+/* Étagères (créées dans le fichier script.js) */
+.shelf {
+  position: absolute;
+  left: 0; right: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  padding: 0 1rem;
+  height: 74px;
+  border-bottom: 5px solid var(--or);
+}
+.shelf-top    { top: 0; }
+.shelf-bottom { bottom: 0; }
+
+.book {
+  flex: 0 0 auto;
+  border-radius: 2px 2px 0 0;
+  box-shadow: inset 0 6px 0 rgba(246, 242, 234, .18);
+}
+
+/* ===== Membres ===== */
+.team {
+  width: min(100% - 2rem, 52rem);
+  margin: 0 auto;
+  padding: 3rem 0 2rem;
+}
+
+.member {
+  display: grid;
+  grid-template-columns: 128px 1fr;
+  grid-template-rows: auto auto auto;
+  column-gap: 1.75rem;
+  align-content: center;
+  padding: 1.75rem 0;
+  border-bottom: 1.5px solid var(--or);
+}
+.member:last-child { border-bottom: 0; }
+.member[hidden] { display: none; }
+
+/* Le sticker occupe toute la hauteur à gauche */
+.sticker {
+  grid-row: 1 / span 3;
+  align-self: center;
+  display: block;
+  width: 128px;
+  height: 128px;
+  border: 4px solid var(--creme);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.5px var(--encre);   /* contour façon autocollant */
+  overflow: hidden;
+  transition: transform .25s ease;
+}
+.member:hover .sticker { transform: rotate(-5deg) scale(1.04); }
+
+.member h2 {
+  grid-column: 2;
+  margin: 0 0 .4rem;
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--marine);
+}
+
+.member p {
+  grid-column: 2;
+  margin: 0;
+  max-width: 62ch;
+}
+
+/* Icônes de contact (LinkedIn, Facebook, GitHub) */
+.contacts {
+  grid-column: 2;
+  display: flex;
+  gap: .9rem;
+  margin: .9rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.contacts a {
+  display: block;
+  color: var(--marine);
+  transition: color .15s ease, transform .15s ease;
+}
+.contacts a:hover { color: var(--or); transform: translateY(-2px); }
+.contacts svg { display: block; width: 26px; height: 26px; }
+
+.no-result {
+  margin: 0;
+  padding: 3rem 1rem 5rem;
+  text-align: center;
+  color: var(--marine);
+}
+.no-result[hidden] { display: none; }
+
+/* ===== Mobile ===== */
+@media (max-width: 640px) {
+  .site-header { flex-wrap: wrap; row-gap: .6rem; }
+  .logo   { order: 1; }
+  .profile { order: 2; margin-left: auto; }
+  .search { order: 3; flex-basis: 100%; max-width: none; margin-left: 0; }
+  .site-header select  { order: 4; }
+  .location-btn        { order: 5; }
+
+  .member { grid-template-columns: 88px 1fr; column-gap: 1rem; }
+  .sticker { width: 88px; height: 88px; }
+  .member h2 { font-size: 1.3rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+}

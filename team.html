@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet the team | Alexandria</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- Dessins réutilisables (stickers + icônes).  -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <defs>
+            <!-- Fond, épaules, cou et tête VIDE (pas de visage) -->
+            <symbol id="st-body" viewBox="0 0 120 120">
+                <rect width="120" height="120" fill="var(--bg)"/>
+                <ellipse cx="60" cy="120" rx="40" ry="32" fill="var(--shirt)"/>
+                <rect x="52" y="68" width="16" height="16" fill="var(--skin)"/>
+                <circle cx="60" cy="54" r="23" fill="var(--skin)"/>
+            </symbol>
+
+            <!-- Coiffures -->
+            <symbol id="hair-bun" viewBox="0 0 120 120">
+                <circle cx="60" cy="24" r="10" fill="var(--hair)"/>
+                <path d="M37 52a23 23 0 0 1 46 0c-8-9-14-11-23-11s-15 2-23 11Z" fill="var(--hair)"/>
+            </symbol>
+            <symbol id="hair-short" viewBox="0 0 120 120">
+                <path d="M37 54a23 23 0 0 1 46 0c0-4-2-6-5-7-10 2-26 2-36 0-3 1-5 3-5 7Z" fill="var(--hair)"/>
+            </symbol>
+            <symbol id="hair-long" viewBox="0 0 120 120">
+                <path d="M35 56a25 25 0 0 1 50 0v30q-4 6-10 0V52q-15-9-30 0v34q-6 6-10 0Z" fill="var(--hair)"/>
+            </symbol>
+            <symbol id="hair-curly" viewBox="0 0 120 120">
+                <circle cx="40" cy="42" r="10" fill="var(--hair)"/>
+                <circle cx="52" cy="32" r="11" fill="var(--hair)"/>
+                <circle cx="68" cy="32" r="11" fill="var(--hair)"/>
+                <circle cx="80" cy="42" r="10" fill="var(--hair)"/>
+                <circle cx="60" cy="38" r="12" fill="var(--hair)"/>
+            </symbol>
+
+            <!-- Accessoires -->
+            <symbol id="prop-book" viewBox="0 0 120 120">
+                <g transform="rotate(-12 88 96)">
+                    <rect x="74" y="82" width="28" height="22" rx="2" fill="#F6F2EA" stroke="#1B2122" stroke-width="2"/>
+                    <line x1="88" y1="82" x2="88" y2="104" stroke="#1B2122" stroke-width="2"/>
+                </g>
+            </symbol>
+            <symbol id="prop-laptop" viewBox="0 0 120 120">
+                <rect x="66" y="86" width="38" height="22" rx="2" fill="#1B2122"/>
+                <rect x="70" y="89" width="30" height="14" rx="1" fill="#F6F2EA"/>
+                <rect x="62" y="108" width="46" height="4" rx="2" fill="#1B2122"/>
+            </symbol>
+            <symbol id="prop-headphones" viewBox="0 0 120 120">
+                <path d="M36 54a24 24 0 0 1 48 0" fill="none" stroke="#1B2122" stroke-width="5" stroke-linecap="round"/>
+                <rect x="31" y="52" width="9" height="16" rx="4" fill="#1B2122"/>
+                <rect x="80" y="52" width="9" height="16" rx="4" fill="#1B2122"/>
+            </symbol>
+            <symbol id="prop-mug" viewBox="0 0 120 120">
+                <rect x="78" y="88" width="20" height="20" rx="3" fill="#F6F2EA" stroke="#1B2122" stroke-width="2"/>
+                <path d="M98 94h4a5 5 0 0 1 0 10h-4" fill="none" stroke="#1B2122" stroke-width="2"/>
+            </symbol>
+
+            <!-- Icônes de contact -->
+            <symbol id="icon-linkedin" viewBox="0 0 24 24">
+                <rect width="24" height="24" rx="4" fill="currentColor"/>
+                <path fill="#F6F2EA" d="M6.2 9.5h2.4V18H6.2V9.5Zm1.2-3.8a1.4 1.4 0 1 1 0 2.8 1.4 1.4 0 0 1 0-2.8ZM10.2 9.5h2.3v1.2c.4-.7 1.3-1.4 2.6-1.4 2.6 0 3 1.7 3 3.9V18h-2.4v-4.2c0-1 0-2.2-1.4-2.2s-1.6 1-1.6 2.1V18h-2.4V9.5Z"/>
+            </symbol>
+            <symbol id="icon-facebook" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </symbol>
+            <symbol id="icon-github" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <header class="site-header">
+        <a class="logo" href="index.html">
+            <img src="bibliotheque.png" alt="Alexandria, home" width="40" height="40">
+        </a>
+
+        <form class="search" role="search">
+            <input type="search" name="q" placeholder="Search" aria-label="Search the team">
+        </form>
+
+        <select name="genre" aria-label="Genre">
+            <option value="">Genre</option>
+            <option value="books">Books</option>
+            <option value="sports">Sports</option>
+            <option value="travel">Travel</option>
+            <option value="kitchen">Kitchen</option>
+        </select>
+
+        <button type="button" class="location-btn">Location</button>
+
+        <a class="profile" href="profile.html">
+            <img src="profile.jpg" alt="My profile" width="36" height="36">
+        </a>
+    </header>
+
+    <main>
+        <section class="hero" aria-labelledby="page-title">
+            <div class="shelf shelf-top" aria-hidden="true"></div>
+            <h1 id="page-title">Meet the team</h1>
+            <div class="shelf shelf-bottom" aria-hidden="true"></div>
+        </section>
+
+        <section class="team" aria-label="Team members">
+            <article class="member">
+                <svg class="sticker" viewBox="0 0 120 120" aria-hidden="true" focusable="false"
+                     style="--skin:#7A4E33; --hair:#1B2122; --shirt:#22344F; --bg:#8A7042;">
+                    <use href="#st-body"/>
+                    <use href="#hair-bun"/>
+                    <use href="#prop-book"/>
+                </svg>
+                <h2>Fotsing Fonou Jenny</h2>
+                <p>Passionnée par le monde de l'informatique, je mets ma curiosité au service du groupe tout en développant mes compétences pour ma future carrière.</p>
+                <ul class="contacts">
+                    <li><a href="#" aria-label="Jenny Fotsing Fonou on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-linkedin"/></svg></a></li>
+                    <li><a href="#" aria-label="Jenny Fotsing Fonou on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-facebook"/></svg></a></li>
+                    <li><a href="#" aria-label="Jenny Fotsing Fonou on GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a></li>
+                </ul>
+            </article>
+
+            <article class="member">
+                <svg class="sticker" viewBox="0 0 120 120" aria-hidden="true" focusable="false"
+                     style="--skin:#5B3A26; --hair:#1B2122; --shirt:#F6F2EA; --bg:#22344F;">
+                    <use href="#st-body"/>
+                    <use href="#hair-curly"/>
+                    <use href="#prop-headphones"/>
+                </svg>
+                <h2>Kazungu Joy</h2>
+                <p>Très investie dans ses études et parfaitement bilingue, elle apporte toujours une foule d'idées originales pendant nos réunions.</p>
+                <ul class="contacts">
+                    <li><a href="#" aria-label="Kazungu Joy on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-linkedin"/></svg></a></li>
+                    <li><a href="#" aria-label="Kazungu Joy on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-facebook"/></svg></a></li>
+                    <li><a href="#" aria-label="Kazungu Joy on GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a></li>
+                </ul>
+            </article>
+
+            <article class="member">
+                <svg class="sticker" viewBox="0 0 120 120" aria-hidden="true" focusable="false"
+                     style="--skin:#B9855C; --hair:#1B2122; --shirt:#8A7042; --bg:#22344F;">
+                    <use href="#st-body"/>
+                    <use href="#hair-short"/>
+                    <use href="#prop-laptop"/>
+                </svg>
+                <h2>Ismail Jamal</h2>
+                <p>Plutôt calme et discret, il parle peu mais s'avère très efficace dès qu'il s'agit de passer à l'action et de coder.</p>
+                <ul class="contacts">
+                    <li><a href="#" aria-label="Ismail Jamal on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-linkedin"/></svg></a></li>
+                    <li><a href="#" aria-label="Ismail Jamal on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-facebook"/></svg></a></li>
+                    <li><a href="#" aria-label="Ismail Jamal on GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a></li>
+                </ul>
+            </article>
+
+            <article class="member">
+                <svg class="sticker" viewBox="0 0 120 120" aria-hidden="true" focusable="false"
+                     style="--skin:#E8C3A0; --hair:#8A7042; --shirt:#1B2122; --bg:#8A7042;">
+                    <use href="#st-body"/>
+                    <use href="#hair-short"/>
+                    <use href="#prop-mug"/>
+                </svg>
+                <h2>Mohammed Mohammed</h2>
+                <p>Malgré un emploi du temps bien chargé, il veille toujours à ce que le travail soit fait rapidement et proprement.</p>
+                <ul class="contacts">
+                    <li><a href="#" aria-label="Mohammed Mohammed on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-linkedin"/></svg></a></li>
+                    <li><a href="#" aria-label="Mohammed Mohammed on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-facebook"/></svg></a></li>
+                    <li><a href="#" aria-label="Mohammed Mohammed on GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a></li>
+                </ul>
+            </article>
+
+            <article class="member">
+                <svg class="sticker" viewBox="0 0 120 120" aria-hidden="true" focusable="false"
+                     style="--skin:#7A4E33; --hair:#1B2122; --shirt:#22344F; --bg:#F6F2EA;">
+                    <use href="#st-body"/>
+                    <use href="#hair-short"/>
+                    <use href="#prop-book"/>
+                </svg>
+                <h2>Powell Nigel</h2>
+                <p>Un vrai passionné d'informatique qui vise grand. Il sait organiser l'équipe, donner la bonne direction pour faire avancer le projet.</p>
+                <ul class="contacts">
+                    <li><a href="#" aria-label="Powell Nigel on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-linkedin"/></svg></a></li>
+                    <li><a href="#" aria-label="Powell Nigel on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-facebook"/></svg></a></li>
+                    <li><a href="#" aria-label="Powell Nigel on GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a></li>
+                </ul>
+            </article>
+
+            <article class="member">
+                <svg class="sticker" viewBox="0 0 120 120" aria-hidden="true" focusable="false"
+                     style="--skin:#B9855C; --hair:#1B2122; --shirt:#8A7042; --bg:#F6F2EA;">
+                    <use href="#st-body"/>
+                    <use href="#hair-long"/>
+                    <use href="#prop-laptop"/>
+                </svg>
+                <h2>Issa Mohamed Ibrahim</h2>
+                <p>C'est notre expert technique. Dès que nous sommes bloqués sur le code ou sur GitHub, il trouve la solution.</p>
+                <ul class="contacts">
+                    <li><a href="#" aria-label="Issa Mohamed Ibrahim on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-linkedin"/></svg></a></li>
+                    <li><a href="#" aria-label="Issa Mohamed Ibrahim on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-facebook"/></svg></a></li>
+                    <li><a href="#" aria-label="Issa Mohamed Ibrahim on GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a></li>
+                </ul>
+            </article>
+        </section>
+
+        <p class="no-result" id="no-result" hidden role="status">No team member matches your search.</p>
+    </main>
+
+</body>
+</html>
