@@ -1,60 +1,535 @@
-<footer>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alexandria - Footer</title>
 
-  <hr>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
 
-  <h2>Reviews:</h2>
-  <p>★★★★★ (4.8 out of 5)</p>
+  <style>
+    /* ---------- Base (same as the main site) ---------- */
+    :root {
+      --paper: #F6F2EA;
+      --brass: #8A7042;
+      --ink: #1B2122;
+      --navy: #22344F;
 
-  <p><strong>Anna</strong> ★★★★★<br>
-  Great prices and fast delivery!</p>
+      --serif: "Fraunces", Georgia, "Times New Roman", serif;
+      --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
 
-  <p><strong>Marc</strong> ★★★★<br>
-  Found a rare edition I was looking for.</p>
+    *, *::before, *::after { box-sizing: border-box; }
 
-  <details>
-    <summary>Leave a review of the site</summary>
+    html { scroll-behavior: smooth; }
 
-    <form>
-      <p>Your rating:</p>
-      <input type="radio" id="five" name="rating">
-      <label for="five">★★★★★</label><br>
-      <input type="radio" id="four" name="rating">
-      <label for="four">★★★★</label><br>
-      <input type="radio" id="three" name="rating">
-      <label for="three">★★★</label><br>
-      <input type="radio" id="two" name="rating">
-      <label for="two">★★</label><br>
-      <input type="radio" id="one" name="rating">
-      <label for="one">★</label>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+    }
 
-      <p>
-        <label for="name">Your name:</label><br>
-        <input type="text" id="name">
-      </p>
+    /* Footer sits at the bottom of the page */
+    .site-footer { margin-top: auto; }
 
-      <p>
-        <label for="review">Your review:</label><br>
-        <textarea id="review"></textarea>
-      </p>
+    a { color: inherit; }
 
-      <button>Send review</button>
-    </form>
-  </details>
+    :focus-visible {
+      outline: 3px solid var(--brass);
+      outline-offset: 2px;
+    }
 
-  <hr>
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
 
-  <h2>Get in touch:</h2>
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: none; }
+    }
 
-  <table width="100%">
-    <tr align="center">
-      <td width="33%"><a href="https://www.facebook.com/"><button><img src="https://cdn.simpleicons.org/facebook" alt="" width="24"> Facebook</button></a></td>
-      <td width="33%"><a href="https://www.instagram.com/"><button><img src="https://cdn.simpleicons.org/instagram" alt="" width="24"> Instagram</button></a></td>
-      <td width="33%"><a href="https://x.com/"><button><img src="https://cdn.simpleicons.org/x" alt="" width="24"> X</button></a></td>
-    </tr>
-  </table>
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; animation: none !important; }
+    }
 
-  <hr>
+    /* ---------- Footer ---------- */
+    .site-footer {
+      background: var(--ink);
+      color: var(--paper);
+      border-top: 3px solid var(--brass);
+    }
+    .site-footer :focus-visible { outline-color: var(--paper); }
 
-  <p align="center">© 2026 Alexandria</p>
+    .footer__inner {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 3rem 1.25rem 1.5rem;
+    }
 
-</footer>
+    .footer__section + .footer__section {
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(246, 242, 234, 0.2);
+    }
+
+    .site-footer h2 {
+      margin: 0 0 1.25rem;
+      padding-left: 0.9rem;
+      border-left: 4px solid var(--brass);
+      font-family: var(--serif);
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    /* Stars and average */
+    .stars { color: var(--brass); letter-spacing: 0.08em; }
+    .site-footer .stars { color: #c9a96a; } /* lighter brass so it reads on dark */
+
+    .rating-summary {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.5rem 0.75rem;
+      margin: 0 0 1.5rem;
+    }
+    .rating-summary__number {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .rating-summary .stars { font-size: 1.4rem; }
+    .rating-summary__text { opacity: 0.85; }
+
+    /* Review cards */
+    .review-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      gap: 1rem;
+      margin: 0 0 1.5rem;
+      padding: 0;
+      list-style: none;
+    }
+    .review {
+      padding: 1rem 1.1rem;
+      background: rgba(246, 242, 234, 0.06);
+      border: 1px solid rgba(246, 242, 234, 0.15);
+      border-radius: 8px;
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+    .review:hover {
+      border-color: var(--brass);
+      transform: translateY(-2px);
+    }
+    .review p { margin: 0; }
+    .review__head { margin-bottom: 0.35rem !important; }
+
+    .review-status {
+      min-height: 1.5rem;
+      margin: 0 0 0.75rem;
+      color: #c9a96a;
+      font-weight: 600;
+    }
+
+    /* "Leave a review" button + form */
+    .review-toggle summary {
+      display: inline-block;
+      padding: 0.7rem 1.3rem;
+      background: var(--brass);
+      color: var(--paper);
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      transition: background 0.15s ease;
+    }
+    .review-toggle summary::-webkit-details-marker { display: none; }
+    .review-toggle summary:hover { background: #9d814b; }
+    .review-toggle[open] summary { background: #9d814b; }
+
+    .review-form {
+      max-width: 34rem;
+      margin-top: 1rem;
+      padding: 1.25rem;
+      background: var(--paper);
+      color: var(--ink);
+      border-radius: 8px;
+      animation: rise 0.3s ease-out both;
+    }
+    .review-form :focus-visible { outline-color: var(--brass); }
+
+    .review-form fieldset { margin: 0 0 1rem; padding: 0; border: 0; }
+    .review-form legend { padding: 0; font-weight: 600; }
+
+    /* Click-able stars: the row is reversed so "hover/checked" can light up
+       every star to the left of the one you point at */
+    .star-rating__stars {
+      display: inline-flex;
+      flex-direction: row-reverse;
+      gap: 0.15rem;
+      margin-top: 0.25rem;
+    }
+    .star-rating label {
+      padding: 0 0.1rem;
+      color: #b9b3a5;
+      font-size: 2rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: color 0.15s ease, transform 0.15s ease;
+    }
+    .star-rating label:hover,
+    .star-rating label:hover ~ label,
+    .star-rating input:checked ~ label { color: var(--brass); }
+    .star-rating label:hover { transform: scale(1.15); }
+    .star-rating input:focus-visible + label {
+      outline: 3px solid var(--brass);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+    .star-rating__text {
+      display: inline-block;
+      margin-left: 0.75rem;
+      font-size: 0.9rem;
+      color: #5b6162;
+    }
+
+    .field { margin: 0 0 1rem; }
+    .field label { display: block; margin-bottom: 0.25rem; font-weight: 600; }
+    .field input,
+    .field textarea {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      font: inherit;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid #b9b3a5;
+      border-radius: 6px;
+    }
+    .field textarea { min-height: 7rem; resize: vertical; }
+    .field__count {
+      display: block;
+      margin-top: 0.25rem;
+      font-size: 0.85rem;
+      color: #5b6162;
+      text-align: right;
+    }
+
+    .form-error {
+      min-height: 1.5rem;
+      margin: 0 0 0.5rem;
+      color: #8c2f2f;
+      font-weight: 600;
+    }
+
+    .btn {
+      padding: 0.7rem 1.4rem;
+      font: inherit;
+      font-weight: 600;
+      color: var(--paper);
+      background: var(--navy);
+      border: 0;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .btn:hover { background: var(--brass); }
+
+    /* Social buttons: equal-width, centered */
+    .social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .social li { display: flex; flex: 1 1 10rem; }
+    .social a {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--brass);
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .social a:hover {
+      background: var(--brass);
+      transform: translateY(-2px);
+    }
+    .social svg { width: 1.5rem; height: 1.5rem; fill: currentColor; }
+
+    /* Bottom bar */
+    .footer__bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.5rem 1rem;
+      margin-top: 2.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(246, 242, 234, 0.2);
+      font-size: 0.9rem;
+    }
+    .footer__bottom p { margin: 0; }
+  </style>
+</head>
+<body>
+
+  <footer class="site-footer" id="site-footer">
+    <div class="footer__inner">
+
+      <!-- Reviews -->
+      <section class="footer__section" aria-labelledby="reviews-title">
+        <h2 id="reviews-title">Reviews:</h2>
+
+        <p class="rating-summary">
+          <span class="rating-summary__number" id="avg-number">4.5</span>
+          <span class="stars" id="avg-stars" aria-hidden="true">★★★★★</span>
+          <span class="rating-summary__text" id="avg-text">out of 5 (2 reviews)</span>
+        </p>
+
+        <ul class="review-list" id="review-list">
+          <li class="review" data-rating="5">
+            <p class="review__head"><strong>Anna</strong> <span class="stars" aria-hidden="true">★★★★★</span><span class="sr-only">5 out of 5 stars</span></p>
+            <p>Great prices and fast delivery!</p>
+          </li>
+          <li class="review" data-rating="4">
+            <p class="review__head"><strong>Marc</strong> <span class="stars" aria-hidden="true">★★★★☆</span><span class="sr-only">4 out of 5 stars</span></p>
+            <p>Found a rare edition I was looking for.</p>
+          </li>
+        </ul>
+
+        <p class="review-status" id="review-status" role="status" aria-live="polite"></p>
+
+        <details class="review-toggle" id="review-toggle">
+          <summary>Leave a review of the site</summary>
+
+          <form class="review-form" id="review-form" novalidate>
+            <fieldset class="star-rating">
+              <legend>Your rating</legend>
+              <div class="star-rating__stars">
+                <input type="radio" class="sr-only" id="star-5" name="rating" value="5">
+                <label for="star-5" title="5 stars"><span class="sr-only">5 stars</span><span aria-hidden="true">★</span></label>
+                <input type="radio" class="sr-only" id="star-4" name="rating" value="4">
+                <label for="star-4" title="4 stars"><span class="sr-only">4 stars</span><span aria-hidden="true">★</span></label>
+                <input type="radio" class="sr-only" id="star-3" name="rating" value="3">
+                <label for="star-3" title="3 stars"><span class="sr-only">3 stars</span><span aria-hidden="true">★</span></label>
+                <input type="radio" class="sr-only" id="star-2" name="rating" value="2">
+                <label for="star-2" title="2 stars"><span class="sr-only">2 stars</span><span aria-hidden="true">★</span></label>
+                <input type="radio" class="sr-only" id="star-1" name="rating" value="1">
+                <label for="star-1" title="1 star"><span class="sr-only">1 star</span><span aria-hidden="true">★</span></label>
+              </div>
+              <span class="star-rating__text" id="rating-text">Choose a rating</span>
+            </fieldset>
+
+            <p class="field">
+              <label for="review-name">Your name</label>
+              <input type="text" id="review-name" name="name" maxlength="40" autocomplete="given-name" required>
+            </p>
+
+            <p class="field">
+              <label for="review-text">Your review</label>
+              <textarea id="review-text" name="review" maxlength="500" required></textarea>
+              <span class="field__count" id="char-count">0 / 500</span>
+            </p>
+
+            <p class="form-error" id="form-error" role="alert"></p>
+
+            <button type="submit" class="btn">Send review</button>
+          </form>
+        </details>
+      </section>
+
+      <!-- Get in touch -->
+      <section class="footer__section" aria-labelledby="touch-title">
+        <h2 id="touch-title">Get in touch:</h2>
+
+        <ul class="social">
+          <li>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2v2.3H7.6V13h2.7v8h3.2Z"/></svg>
+              Facebook
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Zm5.25-3.75a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3Z"/></svg>
+              Instagram
+            </a>
+          </li>
+          <li>
+            <a href="https://x.com/" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+              X
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <div class="footer__bottom">
+        <p>© <span id="year">2026</span> Alexandria</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var reviewForm = document.getElementById("review-form");
+      if (!reviewForm) { return; }
+
+      var list = document.getElementById("review-list");
+      var details = document.getElementById("review-toggle");
+      var status = document.getElementById("review-status");
+      var errorBox = document.getElementById("form-error");
+      var nameInput = document.getElementById("review-name");
+      var textInput = document.getElementById("review-text");
+      var counter = document.getElementById("char-count");
+      var ratingText = document.getElementById("rating-text");
+      var avgNumber = document.getElementById("avg-number");
+      var avgStars = document.getElementById("avg-stars");
+      var avgText = document.getElementById("avg-text");
+
+      var ratingNames = ["", "Terrible", "Poor", "Okay", "Good", "Excellent"];
+      var MAX = 500;
+
+      // 4 -> "★★★★☆"
+      function starString(n) {
+        var out = "";
+        for (var i = 1; i <= 5; i++) { out += i <= n ? "★" : "☆"; }
+        return out;
+      }
+
+      // Recalculate the average from the reviews on the page
+      function updateSummary() {
+        var items = list.querySelectorAll(".review");
+        var total = 0;
+        for (var i = 0; i < items.length; i++) {
+          total += Number(items[i].getAttribute("data-rating"));
+        }
+        var count = items.length;
+        var avg = count ? total / count : 0;
+        avgNumber.textContent = avg.toFixed(1);
+        avgStars.textContent = starString(Math.round(avg));
+        avgText.textContent = "out of 5 (" + count + (count === 1 ? " review)" : " reviews)");
+      }
+
+      // Show the word for the chosen star rating
+      reviewForm.addEventListener("change", function (event) {
+        if (event.target.name === "rating") {
+          ratingText.textContent = ratingNames[event.target.value];
+          errorBox.textContent = "";
+        }
+      });
+
+      // Character counter
+      function updateCounter() {
+        counter.textContent = textInput.value.length + " / " + MAX;
+      }
+      textInput.addEventListener("input", function () {
+        updateCounter();
+        errorBox.textContent = "";
+      });
+      nameInput.addEventListener("input", function () { errorBox.textContent = ""; });
+
+      // Build a review card with textContent so typed text can never run as code
+      function makeReview(name, rating, text) {
+        var li = document.createElement("li");
+        li.className = "review";
+        li.setAttribute("data-rating", rating);
+
+        var head = document.createElement("p");
+        head.className = "review__head";
+
+        var who = document.createElement("strong");
+        who.textContent = name;
+
+        var stars = document.createElement("span");
+        stars.className = "stars";
+        stars.setAttribute("aria-hidden", "true");
+        stars.textContent = starString(rating);
+
+        var spoken = document.createElement("span");
+        spoken.className = "sr-only";
+        spoken.textContent = rating + " out of 5 stars";
+
+        head.appendChild(who);
+        head.appendChild(document.createTextNode(" "));
+        head.appendChild(stars);
+        head.appendChild(spoken);
+
+        var body = document.createElement("p");
+        body.textContent = text;
+
+        li.appendChild(head);
+        li.appendChild(body);
+        return li;
+      }
+
+      reviewForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        var chosen = reviewForm.querySelector('input[name="rating"]:checked');
+        var name = nameInput.value.trim();
+        var text = textInput.value.trim();
+
+        if (!chosen) {
+          errorBox.textContent = "Please choose a star rating.";
+          return;
+        }
+        if (name === "") {
+          errorBox.textContent = "Please enter your name.";
+          nameInput.focus();
+          return;
+        }
+        if (text === "") {
+          errorBox.textContent = "Please write a few words about your experience.";
+          textInput.focus();
+          return;
+        }
+
+        // Newest review goes first
+        list.insertBefore(makeReview(name, Number(chosen.value), text), list.firstChild);
+        updateSummary();
+
+        // Clear the form, close it and say thanks
+        reviewForm.reset();
+        ratingText.textContent = "Choose a rating";
+        updateCounter();
+        errorBox.textContent = "";
+        details.open = false;
+        status.textContent = "Thank you, " + name + "! Your review was added.";
+      });
+
+      updateSummary();
+      updateCounter();
+
+      // Keep the copyright year current
+      var year = document.getElementById("year");
+      if (year) { year.textContent = new Date().getFullYear(); }
+    })();
+  </script>
+
+</body>
+</html>
