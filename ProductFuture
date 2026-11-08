@@ -1,0 +1,45 @@
+main .feature {
+    border: 2px solid #8A7042;
+    background-color: #F6F2EA;
+    color: #1B2122;
+    padding: 20px;
+    margin: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.feature .icon {
+    font-size: 32px;
+}
+
+.feature h2 {
+    color: #22344F;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    line-height: 1.6;
+}
+
+.feature button {
+    background-color: #22344F;
+    color: #F6F2EA;
+    border: 2px solid #8A7042;
+    padding: 10px 18px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.feature button:hover {
+    background-color: #1B2122;
+}
+
+.feature button:focus {
+    outline: 2px solid #22344F;
+    outline-offset: 3px;
+}
+
+.feature .more-info {
+    border-left: 3px solid #8A7042;
+    padding: 10px 15px;
+}
