@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alexandria - Used book marketplace</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Palette from the Figma generator */
+      --paper: #F6F2EA;
+      --brass: #8A7042;
+      --ink: #1B2122;
+      --navy: #22344F;
+
+      --serif: "Fraunces", Georgia, "Times New Roman", serif;
+      --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+    }
+
+    a { color: inherit; }
+
+    /* Visible keyboard focus everywhere */
+    :focus-visible {
+      outline: 3px solid var(--brass);
+      outline-offset: 2px;
+    }
+    header :focus-visible,
+    .hero :focus-visible {
+      outline-color: var(--paper);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ---------- Header ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--navy);
+      color: var(--paper);
+      border-bottom: 3px solid var(--brass);
+      transition: box-shadow 0.2s ease;
+    }
+    header.scrolled {
+      box-shadow: 0 4px 16px rgba(27, 33, 34, 0.35);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem 1.5rem;
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+    }
+
+    .brand {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+    }
+
+    .search-form {
+      display: flex;
+      flex: 1 1 28rem;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .search-form input,
+    .search-form select,
+    .search-form button {
+      font: inherit;
+      font-size: 0.95rem;
+      height: 2.5rem;
+      border-radius: 6px;
+      border: 1px solid transparent;
+    }
+
+    .search-form input[type="search"] {
+      flex: 1 1 14rem;
+      padding: 0 0.75rem;
+      background: var(--paper);
+      color: var(--ink);
+    }
+    .search-form input::placeholder { color: #5b6162; }
+
+    .search-form select {
+      padding: 0 0.5rem;
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .search-form button {
+      padding: 0 1.1rem;
+      background: var(--brass);
+      color: var(--paper);
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .search-form button:hover { background: #9d814b; }
+
+    .search-hint {
+      flex-basis: 100%;
+      min-height: 1.25rem;
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--paper);
+    }
+
+    .account-link {
+      padding: 0.45rem 0.9rem;
+      border: 1px solid var(--brass);
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.15s ease;
+    }
+    .account-link:hover { background: rgba(138, 112, 66, 0.3); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      display: flex;
+      align-items: center;
+      min-height: clamp(26rem, 70vh, 40rem);
+      padding: 3rem 1.25rem;
+      color: var(--paper);
+      /* Photo sits under a navy wash; navy shows if the image is missing */
+      background:
+        linear-gradient(90deg, rgba(34, 52, 79, 0.92) 0%, rgba(34, 52, 79, 0.7) 55%, rgba(27, 33, 34, 0.55) 100%),
+        url("generic_library.jpg") center / cover no-repeat,
+        var(--navy);
+    }
+
+    .hero__inner {
+      width: 100%;
+      max-width: 72rem;
+      margin: 0 auto;
+      animation: rise 0.7s ease-out both;
+    }
+
+    .hero h1 {
+      max-width: 15ch;
+      margin: 0 0 1rem;
+      padding-left: 1.25rem;
+      border-left: 4px solid var(--brass);
+      font-family: var(--serif);
+      font-size: clamp(2.25rem, 6vw, 4.25rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+    }
+
+    .hero p {
+      max-width: 38rem;
+      margin: 0 0 1.75rem;
+      padding-left: calc(1.25rem + 4px);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.6;
+    }
+
+    .hero .cta {
+      display: inline-block;
+      margin-left: calc(1.25rem + 4px);
+      padding: 0.8rem 1.6rem;
+      background: var(--paper);
+      color: var(--navy);
+      border-radius: 6px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .hero .cta:hover {
+      background: var(--brass);
+      color: var(--paper);
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 40rem) {
+      .search-form select,
+      .search-form button { flex: 1 1 auto; }
+      .account-link { margin-left: auto; }
+      .hero { background-position: 70% center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero__inner { animation: none; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="site-header">
+    <nav aria-label="Main">
+      <a class="brand" href="top_half_home_page.html">Alexandria</a>
+
+      <!-- search.html is a placeholder for now -->
+      <form class="search-form" action="search.html" method="get" id="search-form">
+        <label class="sr-only" for="q">Search</label>
+        <input type="search" id="q" name="q" placeholder="Search titles, authors, ISBN (press / to focus)">
+
+        <label class="sr-only" for="genre">Genre</label>
+        <select id="genre" name="genre">
+          <option>All genres</option>
+          <option>Fiction</option>
+          <option>Mystery</option>
+          <option>Science fiction</option>
+          <option>History</option>
+          <option>Biography</option>
+          <option>Children</option>
+        </select>
+
+        <label class="sr-only" for="location">Location</label>
+        <select id="location" name="location">
+          <option>Ottawa</option>
+          <option>Gatineau</option>
+          <option>Kanata</option>
+          <option>Orléans</option>
+        </select>
+
+        <!-- Goes to the search.html placeholder for now -->
+        <button type="submit">Search</button>
+
+        <p class="search-hint" id="search-hint" role="status" aria-live="polite"></p>
+      </form>
+
+      <!-- Placeholder for an account creation page -->
+      <a class="account-link" href="account.html">Account</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__inner">
+        <h1 id="hero-title">Used books, from readers near you</h1>
+        <p>Buy and sell secondhand books. Search by title, author or genre, and message the seller directly.</p>
+        <!-- Placeholder for the actual marketplace browser -->
+        <a class="cta" href="marketplace.html">Browse books</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var header = document.getElementById("site-header");
+      var form = document.getElementById("search-form");
+      var query = document.getElementById("q");
+      var genre = document.getElementById("genre");
+      var location = document.getElementById("location");
+      var hint = document.getElementById("search-hint");
+
+      // Shadow under the sticky header once the page scrolls
+      function onScroll() {
+        header.classList.toggle("scrolled", window.scrollY > 4);
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      // Remember the last genre and location (storage can be blocked, so guard it)
+      function load(el, key) {
+        try {
+          var saved = localStorage.getItem(key);
+          if (saved) {
+            for (var i = 0; i < el.options.length; i++) {
+              if (el.options[i].value === saved) { el.value = saved; break; }
+            }
+          }
+        } catch (e) { /* ignore */ }
+      }
+      function save(el, key) {
+        try { localStorage.setItem(key, el.value); } catch (e) { /* ignore */ }
+      }
+      load(genre, "alexandria:genre");
+      load(location, "alexandria:location");
+      genre.addEventListener("change", function () { save(genre, "alexandria:genre"); });
+      location.addEventListener("change", function () { save(location, "alexandria:location"); });
+
+      // Ask for a search term instead of sending an empty search
+      form.addEventListener("submit", function (event) {
+        if (query.value.trim() === "") {
+          event.preventDefault();
+          hint.textContent = "Enter a title, author or ISBN to search.";
+          query.focus();
+        } else {
+          hint.textContent = "";
+        }
+      });
+      query.addEventListener("input", function () { hint.textContent = ""; });
+
+      // Press "/" to jump to the search box (unless already typing somewhere)
+      document.addEventListener("keydown", function (event) {
+        var tag = (event.target.tagName || "").toLowerCase();
+        var typing = tag === "input" || tag === "textarea" || tag === "select" || event.target.isContentEditable;
+        if (event.key === "/" && !typing && !event.metaKey && !event.ctrlKey && !event.altKey) {
+          event.preventDefault();
+          query.focus();
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
