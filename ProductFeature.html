@@ -1,162 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Features - Alexandria</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Features - Alexandria</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #F6F2Ea;
-            color: #1B2122;
-            margin: 20px;
-        }
 
-        nav {
-            border: 2px solid #8A7042;
-            color: #F6F2EA;
-            background-color: #22344F;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            line-height: 2.5;
-            border-radius: 15px;
-            justify-content: space-between;
-            gap: 15px;
-        }
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
 
-        nav input {
-            padding: 10px;
-            background-color: #F6F2EA;
-            border: 2px solid #8A7042;
-            color: #1B2122;
-            border-radius: 8px;
-            font-size: 14px;
-            outline: none;
-        }
-
-        nav select {
-            color: #1B2122;
-            border: 2px solid #8A7042;
-            border-radius: 10px;
-            background-color: #F6F2EA;
-            padding: 10px;
-            font-size: 15px;
-            cursor: pointer;
-        }
-
-        h1 {
-            text-align: center;
-            color: 22344F;
-        }
-
-        footer {
-            background-color: #22344F;
-            border: 1px solid #8A7042;
-            color: #F6F2EA;
-            text-align: center;
-            padding: 15px;
-            margin-top: 30px;
-        }
-    </style>
-
-    <link rel="stylesheet" href="ProductFuture.css">
+  <link rel="stylesheet" href="ProductFuture.css">
 </head>
-
 <body>
+
+
+  <header id="header">
     <nav>
-        <b>Logo</b>
+      <a class="brand" href="top_half_home_page.html">
+        <span class="logo-circle"><img src="bibliotheque.png" alt="Logo" width="28" height="28"></span>
+        Alexandria
+      </a>
 
-        <label for="search">Search:</label>
-        <input type="search" id="search" placeholder="Search books">
+      <form class="search-form" id="search-form" action="search.html">
+        <input type="search" id="search" placeholder="Search titles, authors, ISBN (press / to focus)">
 
-        <label for="genre">Genre:</label>
-        <select name="genre" id="genre">
-            <option value="">Genre</option>
-            <option value="Math">Math</option>
-            <option value="Science">Science</option>
-            <option value="History">History</option>
-            <option value="Chemistry">Chemistry</option>
-            <option value="Biology">Biology</option>
-            <option value="English">English</option>
+        <select>
+          <option>All genres</option>
+          <option>Fiction</option>
+          <option>Mystery</option>
+          <option>Science fiction</option>
+          <option>History</option>
+          <option>Biography</option>
+          <option>Children</option>
         </select>
 
-        <a href="ottawa.html">Ottawa</a>
+        <select>
+          <option>Ottawa</option>
+          <option>Gatineau</option>
+          <option>Kanata</option>
+          <option>Orléans</option>
+        </select>
+      </form>
+
+      <a class="account" href="account.html">
+        <img src="profile.jpg" alt="Profile" width="24" height="24">
+        Account
+      </a>
     </nav>
+  </header>
 
-    <h1>Product Features</h1>
+ 
+  <section class="page-title">
+    <div class="page-title-text">
+      <h1>Product Features</h1>
+      <p>Everything you need to buy and sell used books safely, close to home.</p>
+    </div>
+  </section>
 
-    <main>
-        <section class="feature">
-            <div class="icon">🚚</div>
-            <div>
-                <h2>Here's How Shipping Works</h2>
-                <p>Before buying a book, confirm the shipping cost, delivery method,
-                    and estimated arrival time with the seller.</p>
-            </div>
 
-            <button type="button"
-                    onclick="toggleDetails('shipping-details', this)"
-                    aria-expanded="false"
-                    aria-controls="shipping-details">
-                Learn more
-            </button>
+  <main class="features">
 
-            <p id="shipping-details" class="more-info" style="display: none;">
-                Ask the seller how the book will be packaged and whether tracking
-                is available. Check that your delivery details are correct before
-                agreeing to the purchase.
-            </p>
-        </section>
 
-        <section class="feature">
-            <div class="icon">👥</div>
-            <div>
-                <h2>How We Connect You</h2>
-                <p>Alexandria connects people who want to buy and sell used books
-                    and textbooks. Buyers can browse by genre and price, and
-                    sellers can list books they no longer need.</p>
-            </div>
+    <div class="feature">
+      <div class="icon-circle">
+        <img src="truck.svg" alt="Truck icon">
+      </div>
+      <div>
+        <h2>Here's How Shipping Works</h2>
+        <p>Before buying a book, confirm the shipping cost, delivery method,
+          and estimated arrival time with the seller.</p>
 
-            <button type="button"
-                    onclick="toggleDetails('connect-details', this)"
-                    aria-expanded="false"
-                    aria-controls="connect-details">
-                Learn more
-            </button>
+        <button class="learn-more" onclick="toggleDetails('shipping-details', this)">Learn more</button>
 
-            <p id="connect-details" class="more-info" style="display: none;">
-                Compare book titles, editions, prices, and condition before choosing
-                a listing. If you are selling, include a clear description so buyers
-                know what they are getting.
-            </p>
-        </section>
+        <p id="shipping-details" class="more-info" style="display: none;">
+          Ask the seller how the book will be packaged and whether tracking
+          is available. Check that your delivery details are correct before
+          agreeing to the purchase.
+        </p>
+      </div>
+    </div>
 
-        <section class="feature">
-            <div class="icon">🔒</div>
-            <div>
-                <h2>How to Stay Secure</h2>
-                <p>Use a strong password and keep your login details private.
-                    Check the book description and seller details before buying.
-                    Never share your password or verification codes.</p>
-            </div>
 
-            <button type="button"
-                    onclick="toggleDetails('security-details', this)"
-                    aria-expanded="false"
-                    aria-controls="security-details">
-                Learn more
-            </button>
+    <div class="feature">
+      <div class="icon-circle">
+        <img src="people.svg" alt="People icon">
+      </div>
+      <div>
+        <h2>How We Connect You</h2>
+        <p>Alexandria connects people who want to buy and sell used books
+          and textbooks. Buyers can browse by genre and price, and
+          sellers can list books they no longer need.</p>
 
-            <p id="security-details" class="more-info" style="display: none;">
-                Be cautious if someone asks for your password or sends an unfamiliar
-                link. If an offer seems suspicious, stop and check the details
-                before continuing.
-            </p>
-        </section>
-    </main>
+        <button class="learn-more" onclick="toggleDetails('connect-details', this)">Learn more</button>
 
-    <script src="ProductFuture.js"></script>
+        <p id="connect-details" class="more-info" style="display: none;">
+          Compare book titles, editions, prices, and condition before choosing
+          a listing. If you are selling, include a clear description so buyers
+          know what they are getting.
+        </p>
+      </div>
+    </div>
+
+ 
+    <div class="feature">
+      <div class="icon-circle">
+        <img src="lock.svg" alt="Lock icon">
+      </div>
+      <div>
+        <h2>How We Secure You</h2>
+        <p>Use a strong password and keep your login details private.
+          Check the book description and seller details before buying.
+          Never share your password or verification codes.</p>
+
+        <button class="learn-more" onclick="toggleDetails('security-details', this)">Learn more</button>
+
+        <p id="security-details" class="more-info" style="display: none;">
+          Be cautious if someone asks for your password or sends an unfamiliar
+          link. If an offer seems suspicious, stop and check the details
+          before continuing.
+        </p>
+      </div>
+    </div>
+
+  </main>
+
+
+  <footer>
+    <div class="footer-links">
+      <a href="top_half_home_page.html">Home</a>
+      <a href="ProductFeature.html" class="active">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="team.html">Team</a>
+    </div>
+    <p>&copy; 2026 Alexandria</p>
+  </footer>
+
+  <script src="ProductFuture.js"></script>
 </body>
 </html>
