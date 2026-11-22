@@ -1,45 +1,322 @@
-main .feature {
-    border: 2px solid #8A7042;
-    background-color: #F6F2EA;
-    color: #1B2122;
-    padding: 20px;
-    margin: 20px;
-    font-family: Arial, sans-serif;
+:root {
+  --paper: #F6F2EA;
+  --brass: #8A7042;
+  --ink: #1B2122;
+  --navy: #22344F;
 }
 
-.feature .icon {
-    font-size: 32px;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  background-color: var(--paper);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--brass);
+  outline-offset: 2px;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--navy);
+  color: var(--paper);
+  border-bottom: 3px solid var(--brass);
+}
+
+header.scrolled {
+  box-shadow: 0 4px 16px rgba(27, 33, 34, 0.35);
+}
+
+header nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 12px 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 26px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.logo-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--paper);
+  border: 2px solid var(--brass);
+}
+
+.search-form {
+  display: flex;
+  flex: 1 1 448px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-form input,
+.search-form select {
+  height: 40px;
+  font-family: inherit;
+  font-size: 15px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+}
+
+.search-form input {
+  flex: 1 1 224px;
+  padding: 0 12px;
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+.search-form select {
+  padding: 0 8px;
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 6px;
+  border: 1px solid var(--brass);
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.account img {
+  border-radius: 50%;
+}
+
+.account:hover {
+  background-color: rgba(138, 112, 66, 0.3);
+}
+
+.page-title {
+  padding: 56px 20px;
+  color: var(--paper);
+  background-color: var(--navy);
+
+  background-image: linear-gradient(to right, rgba(34, 52, 79, 0.94), rgba(34, 52, 79, 0.78) 60%, rgba(27, 33, 34, 0.6)), url("generic_library.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.page-title-text {
+  max-width: 1152px;
+  margin: 0 auto;
+  animation: rise 0.7s ease-out;
+}
+
+.page-title h1 {
+  margin: 0 0 12px;
+  padding-left: 20px;
+  border-left: 4px solid var(--brass);
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 56px;
+  line-height: 1.08;
+}
+
+.page-title p {
+  max-width: 608px;
+  margin: 0;
+  padding-left: 24px;
+  font-size: 19.2px;
+}
+
+.features {
+  display: block;
+  max-width: 896px;
+  margin: 0 auto;
+  padding: 40px 20px 56px;
+}
+
+.feature {
+  display: flex;
+  gap: 28px;
+  padding: 32px 0;
+  border-bottom: 1.5px solid var(--brass);
+}
+
+.feature:last-child {
+  border-bottom: none;
+}
+
+.icon-circle {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background-color: var(--navy);
+  border: 4px solid var(--paper);
+  box-shadow: 0 0 0 2px var(--brass);
+}
+
+.icon-circle img {
+  width: 44px;
+  height: 44px;
 }
 
 .feature h2 {
-    color: #22344F;
-    margin-bottom: 10px;
+  margin: 4px 0 8px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 28px;
+  line-height: 1.2;
+  color: var(--navy);
 }
 
 .feature p {
-    line-height: 1.6;
+  max-width: 640px;
+  margin: 0;
+  line-height: 1.65;
 }
 
-.feature button {
-    background-color: #22344F;
-    color: #F6F2EA;
-    border: 2px solid #8A7042;
-    padding: 10px 18px;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    cursor: pointer;
+.learn-more {
+  margin-top: 16px;
+  height: 44px;
+  padding: 0 19px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--paper);
+  background-color: var(--navy);
+  border: 1px solid var(--navy);
+  border-radius: 6px;
+  cursor: pointer;
 }
 
-.feature button:hover {
-    background-color: #1B2122;
+.learn-more:hover {
+  background-color: var(--brass);
+  border-color: var(--brass);
 }
 
-.feature button:focus {
-    outline: 2px solid #22344F;
-    outline-offset: 3px;
+.learn-more.open {
+  background-color: transparent;
+  color: var(--navy);
+  border-color: var(--brass);
 }
 
 .feature .more-info {
-    border-left: 3px solid #8A7042;
-    padding: 10px 15px;
+  margin-top: 16px;
+  padding: 12px 16px;
+  border-left: 3px solid var(--brass);
+  border-radius: 0 6px 6px 0;
+  background-color: rgba(138, 112, 66, 0.1);
+  animation: rise 0.3s ease-out;
+}
+
+footer {
+  padding: 24px 20px;
+  text-align: center;
+  color: var(--paper);
+  background-color: var(--navy);
+  border-top: 3px solid var(--brass);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+}
+
+.footer-links a {
+  padding: 4px 0;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.footer-links a:hover,
+.footer-links a.active {
+  border-bottom-color: var(--brass);
+}
+
+footer p {
+  margin: 12px 0 0;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .account {
+    margin-left: auto;
+  }
+
+  .search-form {
+    order: 3;
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .search-form select {
+    flex: 1 1 auto;
+  }
+
+  .page-title h1 {
+    font-size: 36px;
+  }
+
+  .page-title p {
+    font-size: 16.8px;
+  }
+
+  .feature {
+    gap: 16px;
+  }
+
+  .icon-circle {
+    width: 64px;
+    height: 64px;
+    border-width: 3px;
+  }
+
+  .icon-circle img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .feature h2 {
+    font-size: 22.4px;
+  }
 }
