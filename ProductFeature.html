@@ -5,25 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product Features - Alexandria</title>
 
-
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="shared.css">
   <link rel="stylesheet" href="ProductFuture.css">
+  <script src="shared.js" defer></script>
 </head>
 <body>
 
-
-  <header id="header">
-    <nav>
-      <a class="brand" href="top_half_home_page.html">
-        <span class="logo-circle"><img src="bibliotheque.png" alt="Logo" width="28" height="28"></span>
+  <header class="site-header" id="site-header">
+    <nav aria-label="Main">
+      <a class="brand" href="index.html">
+        <span class="logo-circle"><img src="bibliotheque.png" alt="" width="28" height="28"></span>
         Alexandria
       </a>
 
-      <form class="search-form" id="search-form" action="search.html">
-        <input type="search" id="search" placeholder="Search titles, authors, ISBN (press / to focus)">
+      <form class="search-form" id="search-form" action="search.html" method="get" role="search">
+        <input type="search" id="search" name="q" placeholder="Search titles, authors, ISBN (press / to focus)" aria-label="Search titles, authors or ISBN">
 
-        <select>
+        <select id="genre" name="genre" aria-label="Genre">
           <option>All genres</option>
           <option>Fiction</option>
           <option>Mystery</option>
@@ -33,7 +31,7 @@
           <option>Children</option>
         </select>
 
-        <select>
+        <select id="location" name="location" aria-label="Location">
           <option>Ottawa</option>
           <option>Gatineau</option>
           <option>Kanata</option>
@@ -42,7 +40,7 @@
       </form>
 
       <a class="account" href="account.html">
-        <img src="profile.jpg" alt="Profile" width="24" height="24">
+        <img src="profile.jpg" alt="" width="24" height="24">
         Account
       </a>
     </nav>
@@ -56,9 +54,7 @@
     </div>
   </section>
 
-
   <main class="features">
-
 
     <div class="feature">
       <div class="icon-circle">
@@ -78,7 +74,6 @@
         </p>
       </div>
     </div>
-
 
     <div class="feature">
       <div class="icon-circle">
@@ -123,13 +118,14 @@
 
   </main>
 
-
   <footer>
     <div class="footer-links">
-      <a href="top_half_home_page.html">Home</a>
+      <a href="index.html">Home</a>
       <a href="ProductFeature.html" class="active">Features</a>
       <a href="pricing.html">Pricing</a>
       <a href="team.html">Team</a>
+      <a href="return.html">Return Policy</a>
+      <a href="terms.html">Terms &amp; Conditions</a>
     </div>
     <p>&copy; 2026 Alexandria</p>
   </footer>

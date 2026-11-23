@@ -1,0 +1,172 @@
+/* ALEXANDRIA — shared styles: site fonts + top bar (same look as the Features page).
+   Linked from every page. Change the fonts here and the whole site follows. */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+  --font-body: 'DM Sans', Arial, sans-serif;
+  --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
+}
+
+/* ---------- Top bar ---------- */
+.site-header,
+.site-header * { box-sizing: border-box; }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #22344F;
+  color: #F6F2EA;
+  border-bottom: 3px solid #8A7042;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.site-header.scrolled {
+  box-shadow: 0 4px 16px rgba(27, 33, 34, 0.35);
+}
+
+.site-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 12px 20px;
+}
+
+.site-header a {
+  color: inherit;
+}
+
+.site-header .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-header .logo-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #F6F2EA;
+  border: 2px solid #8A7042;
+}
+
+.site-header .search-form {
+  display: flex;
+  flex: 1 1 448px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.site-header .search-form input,
+.site-header .search-form select {
+  height: 40px;
+  font-family: inherit;
+  font-size: 15px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background-color: #F6F2EA;
+  color: #1B2122;
+}
+
+.site-header .search-form input {
+  flex: 1 1 224px;
+  padding: 0 12px;
+}
+
+.site-header .search-form select {
+  padding: 0 8px;
+}
+
+.site-header .account {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 6px;
+  border: 1px solid #8A7042;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.site-header .account img {
+  border-radius: 50%;
+}
+
+.site-header .account:hover {
+  background-color: rgba(138, 112, 66, 0.3);
+}
+
+.site-header :focus-visible {
+  outline: 3px solid #F6F2EA;
+  outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+  .site-header .account { margin-left: auto; }
+  .site-header .search-form { order: 3; flex-basis: 100%; }
+}
+
+@media (max-width: 640px) {
+  .site-header .search-form select { flex: 1 1 auto; }
+}
+
+/* ---------- Page banner (title over the library photo) ---------- */
+.page-title {
+  padding: 56px 20px;
+  color: #F6F2EA;
+  background-color: #22344F;
+  background-image: linear-gradient(to right, rgba(34, 52, 79, 0.94), rgba(34, 52, 79, 0.78) 60%, rgba(27, 33, 34, 0.6)), url("generic_library.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.page-title-text {
+  max-width: 1152px;
+  margin: 0 auto;
+  animation: rise 0.7s ease-out;
+}
+
+.page-title h1 {
+  margin: 0 0 12px;
+  padding-left: 20px;
+  border-left: 4px solid #8A7042;
+  font-family: var(--font-heading);
+  font-size: 56px;
+  line-height: 1.08;
+}
+
+.page-title p {
+  max-width: 608px;
+  margin: 0;
+  padding-left: 24px;
+  font-size: 19.2px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .page-title h1 { font-size: 36px; }
+  .page-title p { font-size: 16.8px; }
+}

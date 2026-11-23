@@ -11,7 +11,7 @@
 
 body {
   margin: 0;
-  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-body);
   color: var(--ink);
   background-color: var(--paper);
   line-height: 1.5;
@@ -24,130 +24,6 @@ a {
 :focus-visible {
   outline: 3px solid var(--brass);
   outline-offset: 2px;
-}
-
-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background-color: var(--navy);
-  color: var(--paper);
-  border-bottom: 3px solid var(--brass);
-}
-
-header.scrolled {
-  box-shadow: 0 4px 16px rgba(27, 33, 34, 0.35);
-}
-
-header nav {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px 24px;
-  max-width: 1152px;
-  margin: 0 auto;
-  padding: 12px 20px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: "Fraunces", Georgia, serif;
-  font-size: 26px;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.logo-circle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--paper);
-  border: 2px solid var(--brass);
-}
-
-.search-form {
-  display: flex;
-  flex: 1 1 448px;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-}
-
-.search-form input,
-.search-form select {
-  height: 40px;
-  font-family: inherit;
-  font-size: 15px;
-  border: 1px solid transparent;
-  border-radius: 6px;
-}
-
-.search-form input {
-  flex: 1 1 224px;
-  padding: 0 12px;
-  background-color: var(--paper);
-  color: var(--ink);
-}
-
-.search-form select {
-  padding: 0 8px;
-  background-color: var(--paper);
-  color: var(--ink);
-}
-
-.account {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px 6px 6px;
-  border: 1px solid var(--brass);
-  border-radius: 6px;
-  text-decoration: none;
-}
-
-.account img {
-  border-radius: 50%;
-}
-
-.account:hover {
-  background-color: rgba(138, 112, 66, 0.3);
-}
-
-.page-title {
-  padding: 56px 20px;
-  color: var(--paper);
-  background-color: var(--navy);
-
-  background-image: linear-gradient(to right, rgba(34, 52, 79, 0.94), rgba(34, 52, 79, 0.78) 60%, rgba(27, 33, 34, 0.6)), url("generic_library.jpg");
-  background-size: cover;
-  background-position: center;
-}
-
-.page-title-text {
-  max-width: 1152px;
-  margin: 0 auto;
-  animation: rise 0.7s ease-out;
-}
-
-.page-title h1 {
-  margin: 0 0 12px;
-  padding-left: 20px;
-  border-left: 4px solid var(--brass);
-  font-family: "Fraunces", Georgia, serif;
-  font-size: 56px;
-  line-height: 1.08;
-}
-
-.page-title p {
-  max-width: 608px;
-  margin: 0;
-  padding-left: 24px;
-  font-size: 19.2px;
 }
 
 .features {
@@ -188,7 +64,7 @@ header nav {
 
 .feature h2 {
   margin: 4px 0 8px;
-  font-family: "Fraunces", Georgia, serif;
+  font-family: var(--font-heading);
   font-size: 28px;
   line-height: 1.2;
   color: var(--navy);
@@ -266,41 +142,7 @@ footer p {
   opacity: 0.8;
 }
 
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 900px) {
-  .account {
-    margin-left: auto;
-  }
-
-  .search-form {
-    order: 3;
-    flex-basis: 100%;
-  }
-}
-
 @media (max-width: 640px) {
-  .search-form select {
-    flex: 1 1 auto;
-  }
-
-  .page-title h1 {
-    font-size: 36px;
-  }
-
-  .page-title p {
-    font-size: 16.8px;
-  }
-
   .feature {
     gap: 16px;
   }
@@ -319,4 +161,50 @@ footer p {
   .feature h2 {
     font-size: 22.4px;
   }
+}
+
+/* Placeholder pages */
+.placeholder {
+  max-width: 896px;
+  margin: 0 auto;
+  padding: 56px 20px;
+}
+
+.placeholder .card {
+  padding: 28px;
+  border-left: 3px solid var(--brass);
+  border-radius: 0 6px 6px 0;
+  background-color: rgba(138, 112, 66, 0.1);
+}
+
+.placeholder .card p {
+  margin: 0 0 20px;
+}
+
+.placeholder .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 11px 20px;
+  font-weight: 600;
+  color: var(--paper);
+  background-color: var(--navy);
+  border: 1px solid var(--navy);
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: var(--brass);
+  border-color: var(--brass);
+}
+
+.btn.secondary {
+  color: var(--navy);
+  background-color: transparent;
+  border-color: var(--brass);
 }

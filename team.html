@@ -5,40 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meet the team | Alexandria</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
-
     <!-- Font Awesome (icônes) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <link rel="stylesheet" href="shared.css">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+  <script src="shared.js" defer></script>
 </head>
 <body>
 
     <!-- En-tête -->
-    <header>
-        <a href="index.html"><img class="logo" src="bibliotheque.png" alt="Alexandria" width="40"></a>
+  <header class="site-header" id="site-header">
+    <nav aria-label="Main">
+      <a class="brand" href="index.html">
+        <span class="logo-circle"><img src="bibliotheque.png" alt="" width="28" height="28"></span>
+        Alexandria
+      </a>
 
-        <input type="search" id="search" placeholder="Search">
+      <form class="search-form" id="search-form" action="search.html" method="get" role="search">
+        <input type="search" id="search" name="q" placeholder="Search titles, authors, ISBN (press / to focus)" aria-label="Search titles, authors or ISBN">
 
-        <select>
-            <option>Genre</option>
-            <option>Books</option>
-            <option>Sports</option>
-            <option>Travel</option>
-            <option>Kitchen</option>
+        <select id="genre" name="genre" aria-label="Genre">
+          <option>All genres</option>
+          <option>Fiction</option>
+          <option>Mystery</option>
+          <option>Science fiction</option>
+          <option>History</option>
+          <option>Biography</option>
+          <option>Children</option>
         </select>
 
-        <button>Location</button>
+        <select id="location" name="location" aria-label="Location">
+          <option>Ottawa</option>
+          <option>Gatineau</option>
+          <option>Kanata</option>
+          <option>Orléans</option>
+        </select>
+      </form>
 
-        <a href="profile.html"><img class="profile" src="profile.jpg" alt="Profile" width="36"></a>
-    </header>
+      <a class="account" href="account.html">
+        <img src="profile.jpg" alt="" width="24" height="24">
+        Account
+      </a>
+    </nav>
+  </header>
 
-    <!-- Bandeau avec les étagères -->
-    <section class="hero">
-        <div class="shelf shelf-top"></div>
-        <h1>Meet the team</h1>
-        <div class="shelf shelf-bottom"></div>
+    <!-- Bandeau -->
+    <section class="page-title">
+        <div class="page-title-text">
+            <h1>Meet the team</h1>
+            <p>The people behind Alexandria.</p>
+        </div>
     </section>
 
     <!-- Membres  -->
@@ -46,90 +64,84 @@
 
         <div class="member">
             <div class="sticker" style="background: #8A7042; color: #F6F2EA;">
-                <i class="fa-solid fa-user-tie"></i>
+                <img src="jenny.jpg" alt="Photo of Jenny Fotsing Fonou">
             </div>
             <div class="info">
                 <h2>Fotsing Fonou Jenny</h2>
                 <p>Passionnée par le monde de l'informatique, je mets ma curiosité au service du groupe tout en développant mes compétences pour ma future carrière.</p>
                 <div class="contacts">
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="member">
-            <div class="sticker" style="background: #22344F; color: #F6F2EA;">
-                <i class="fa-solid fa-user-tie"></i>
-            </div>
-            <div class="info">
-                <h2>Kazungu Joy</h2>
-                <p>Très investie dans ses études et parfaitement bilingue, elle apporte toujours une foule d'idées originales pendant nos réunions.</p>
-                <div class="contacts">
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="member">
-            <div class="sticker" style="background: #22344F; color: #F6F2EA;">
-                <i class="fa-solid fa-user-tie"></i>
-            </div>
-            <div class="info">
-                <h2>Ismail Jamal</h2>
-                <p>Plutôt calme et discret, il parle peu mais s'avère très efficace dès qu'il s'agit de passer à l'action et de coder.</p>
-                <div class="contacts">
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/jenny-fotsing-fonou/"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/jennyfotsingfonou"><i class="fa-brands fa-github"></i></a>
                 </div>
             </div>
         </div>
 
         <div class="member">
             <div class="sticker" style="background: #8A7042; color: #F6F2EA;">
-                <i class="fa-solid fa-user-tie"></i>
+                <img src="joy.png" alt="Photo of Joy Kazungu">
+            </div>
+            <div class="info">
+                <h2>Kazungu Joy</h2>
+                <p>Très investie dans ses études et parfaitement bilingue, elle apporte toujours une foule d'idées originales pendant nos réunions.</p>
+                <div class="contacts">
+                    <a href="https://www.linkedin.com/in/joy-aurore-kazungu-404248444/"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/kazungu-joy-SWE"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="member">
+            <div class="sticker" style="background: #8A7042; color: #F6F2EA;">
+                <img src="jamal.jpg" alt="Photo of Ismail Jamal">
+            </div>
+            <div class="info">
+                <h2>Ismail Jamal</h2>
+                <p>Plutôt calme et discret, il parle peu mais s'avère très efficace dès qu'il s'agit de passer à l'action et de coder.</p>
+                <div class="contacts">
+                    <a href="https://www.linkedin.com/in/jamal-ismail-6699a3436/"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/jamali0"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="member">
+            <div class="sticker" style="background: #8A7042; color: #F6F2EA;">
+                <img src="mohammed.jpg" alt="Photo of Mohammed Mohammed">
             </div>
             <div class="info">
                 <h2>Mohammed Mohammed</h2>
                 <p>Malgré un emploi du temps bien chargé, il veille toujours à ce que le travail soit fait rapidement et proprement.</p>
                 <div class="contacts">
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/mohammed-mohammed-a1428144b/"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/mmrm16935-coder"><i class="fa-brands fa-github"></i></a>
                 </div>
             </div>
         </div>
 
         <div class="member">
-            <div class="sticker" style="background: #F6F2EA; color: #22344F;">
-                <i class="fa-solid fa-user-tie"></i>
+            <div class="sticker" style="background: #8A7042; color: #F6F2EA;">
+                <img src="nigel.jpg" alt="Photo of Nigel Powell">
             </div>
             <div class="info">
-                <h2>Powell Nigel</h2>
+                <h2>Nigel Powell</h2>
                 <p>Un vrai passionné d'informatique qui vise grand. Il sait organiser l'équipe, donner la bonne direction pour faire avancer le projet.</p>
                 <div class="contacts">
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/nigel-powell-513684443/"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/nlpowell"><i class="fa-brands fa-github"></i></a>
                 </div>
             </div>
         </div>
 
         <div class="member">
-            <div class="sticker" style="background: #F6F2EA; color: #22344F;">
-                <i class="fa-solid fa-user-tie"></i>
+            <div class="sticker" style="background: #8A7042; color: #F6F2EA;">
+                <img src="ibrahim.jpg" alt="Photo of Issa Mohamed Ibrahim">
             </div>
             <div class="info">
                 <h2>Issa Mohamed Ibrahim</h2>
                 <p>C'est notre expert technique. Dès que nous sommes bloqués sur le code ou sur GitHub, il trouve la solution.</p>
                 <div class="contacts">
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/ibrahim-mohamed-271752331/"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/ibrahim-issa-SWE"><i class="fa-brands fa-github"></i></a>
                 </div>
             </div>
         </div>
@@ -137,6 +149,18 @@
         <!-- Message caché affiché quand la recherche ne trouve personne -->
         <p id="no-result" hidden>No team member matches your search.</p>
     </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="ProductFeature.html">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="team.html" class="active">Team</a>
+      <a href="return.html">Return Policy</a>
+      <a href="terms.html">Terms &amp; Conditions</a>
+    </div>
+    <p>&copy; 2026 Alexandria</p>
+  </footer>
 
 </body>
 </html>

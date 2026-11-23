@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account - Alexandria</title>
+
+  <link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="ProductFuture.css">
+  <script src="shared.js" defer></script>
+</head>
+<body>
+
+  <header class="site-header" id="site-header">
+    <nav aria-label="Main">
+      <a class="brand" href="index.html">
+        <span class="logo-circle"><img src="bibliotheque.png" alt="" width="28" height="28"></span>
+        Alexandria
+      </a>
+
+      <form class="search-form" id="search-form" action="search.html" method="get" role="search">
+        <input type="search" id="search" name="q" placeholder="Search titles, authors, ISBN (press / to focus)" aria-label="Search titles, authors or ISBN">
+
+        <select id="genre" name="genre" aria-label="Genre">
+          <option>All genres</option>
+          <option>Fiction</option>
+          <option>Mystery</option>
+          <option>Science fiction</option>
+          <option>History</option>
+          <option>Biography</option>
+          <option>Children</option>
+        </select>
+
+        <select id="location" name="location" aria-label="Location">
+          <option>Ottawa</option>
+          <option>Gatineau</option>
+          <option>Kanata</option>
+          <option>Orléans</option>
+        </select>
+      </form>
+
+      <a class="account" href="account.html">
+        <img src="profile.jpg" alt="" width="24" height="24">
+        Account
+      </a>
+    </nav>
+  </header>
+
+  <section class="page-title">
+    <div class="page-title-text">
+      <h1>Account</h1>
+      <p>Sign in or create an account to buy and sell books.</p>
+    </div>
+  </section>
+
+  <main class="placeholder">
+    <div class="card">
+      <p id="status">Account sign-in and sign-up are coming soon.</p>
+      <div class="actions">
+        <a class="btn" href="index.html">Back to home</a>
+        <a class="btn secondary" href="marketplace.html">Browse books</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="ProductFeature.html">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="team.html">Team</a>
+      <a href="return.html">Return Policy</a>
+      <a href="terms.html">Terms &amp; Conditions</a>
+    </div>
+    <p>&copy; 2026 Alexandria</p>
+  </footer>
+  <script src="ProductFuture.js"></script>
+</body>
+</html>
