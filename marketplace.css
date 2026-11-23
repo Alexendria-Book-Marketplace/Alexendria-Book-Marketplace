@@ -1,0 +1,278 @@
+/* ALEXANDRIA — Marketplace page (listing cards that expand on click).
+   Uses the colour variables from ProductFuture.css. */
+
+.listings {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 40px 20px 64px;
+}
+
+.listings__note {
+  margin: 0 0 20px;
+  color: #5b6162;
+}
+
+/* Cards side by side: as many columns as fit, never narrower than 280px */
+.listing-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  align-items: start; /* an opened card grows without stretching its neighbours */
+}
+
+/* ----- One listing card ----- */
+.listing {
+  background: #fff;
+  border: 1px solid rgba(27, 33, 34, 0.12);
+  border-radius: 10px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.listing:hover,
+.listing[open] {
+  border-color: var(--brass);
+}
+
+.listing:hover {
+  transform: translateY(-2px);
+}
+
+.listing[open] {
+  box-shadow: 0 10px 28px rgba(27, 33, 34, 0.1);
+}
+
+/* The always-visible part of the card */
+.listing summary {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) 14px;
+  grid-template-areas:
+    "cover main chevron"
+    "meta  meta meta";
+  align-items: start;
+  gap: 14px;
+  padding: 16px;
+  cursor: pointer;
+  list-style: none;
+  border-radius: 10px;
+}
+
+.listing summary::-webkit-details-marker { display: none; }
+
+.listing__cover {
+  grid-area: cover;
+  position: relative;
+  width: 56px;
+  height: 76px;
+  border-radius: 3px 6px 6px 3px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.28) 0 7px, transparent 7px), var(--cover, var(--navy));
+  box-shadow: 0 2px 6px rgba(27, 33, 34, 0.25);
+}
+
+/* brass band across the cover */
+.listing__cover::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 8px;
+  top: 22px;
+  height: 3px;
+  background: var(--brass);
+  box-shadow: 0 8px 0 var(--brass);
+}
+
+.listing__main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.listing__title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.listing__author {
+  color: #5b6162;
+  font-size: 0.95rem;
+}
+
+.listing__chevron {
+  grid-area: chevron;
+  width: 10px;
+  height: 10px;
+  margin-top: 8px;
+  border-right: 2px solid var(--brass);
+  border-bottom: 2px solid var(--brass);
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.listing[open] .listing__chevron {
+  margin-top: 14px;
+  transform: rotate(-135deg);
+}
+
+/* Condition + pickup area on the left, price on the right */
+.listing__meta {
+  grid-area: meta;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "badge price"
+    "loc   price";
+  align-items: center;
+  gap: 8px 12px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(27, 33, 34, 0.12);
+}
+
+.listing__badge {
+  grid-area: badge;
+  justify-self: start;
+  padding: 2px 12px;
+  border: 1px solid var(--brass);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--brass);
+  white-space: nowrap;
+}
+
+.listing__badge strong { font-weight: 700; }
+
+.listing__loc {
+  grid-area: loc;
+  font-size: 0.95rem;
+}
+
+.listing__price {
+  grid-area: price;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ----- The part that opens ----- */
+.listing__more {
+  display: grid;
+  gap: 16px;
+  margin: 0 16px;
+  padding: 18px 0 20px;
+  border-top: 1px solid rgba(27, 33, 34, 0.12);
+  animation: rise 0.3s ease-out;
+}
+
+.listing__desc {
+  margin: 0 0 14px;
+}
+
+.listing__seller {
+  margin: 0;
+  padding: 12px 14px;
+  border-left: 3px solid var(--brass);
+  border-radius: 0 6px 6px 0;
+  background: rgba(138, 112, 66, 0.1);
+  font-size: 0.95rem;
+}
+
+.listing__seller strong { display: block; }
+
+.listing__facts {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 16px;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.listing__facts dt {
+  font-weight: 600;
+  color: #5b6162;
+}
+
+.listing__facts dd { margin: 0; }
+
+.listing__actions {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+}
+
+.listing__actions small { color: #5b6162; }
+
+/* ----- Search results page ----- */
+.search-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 20px;
+  margin: 0 0 20px;
+}
+
+.search-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+}
+
+.search-summary {
+  margin: 0;
+  font-weight: 600;
+}
+
+.search-clear {
+  display: inline-block;
+  padding: 3px 14px;
+  border: 1px solid var(--brass);
+  border-radius: 999px;
+  color: var(--brass);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.search-clear:hover {
+  background-color: var(--brass);
+  color: var(--paper);
+}
+
+.search-clear[hidden] { display: none; }
+
+.search-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.search-area[hidden] { display: none; }
+
+.search-area input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--brass);
+}
+
+.search-empty {
+  max-width: 40rem;
+  padding: 22px 24px;
+  border-left: 3px solid var(--brass);
+  border-radius: 0 6px 6px 0;
+  background: rgba(138, 112, 66, 0.1);
+}
+
+.search-empty[hidden] { display: none; }
+
+.search-empty p { margin: 0 0 16px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .listing { transition: none; }
+  .listing__more { animation: none; }
+  .listing__chevron { transition: none; }
+}

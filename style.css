@@ -15,96 +15,9 @@ body {
   margin: 0;
   background: var(--creme);
   color: var(--encre);
-  font-family: "Figtree", sans-serif;
+  font-family: var(--font-body);
   font-size: 17px;
   line-height: 1.6;
-}
-
-/* En-tête */
-header {
-  position: sticky;      /* reste en haut quand on descend */
-  top: 0;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 12px 30px;
-  background: var(--creme);
-  border-bottom: 3px solid var(--or);
-}
-
-.logo {
-  filter: brightness(0);   /* rend le logo noir */
-}
-
-.profile {
-  border-radius: 50%;
-}
-
-/* Barre de recherche, menu et bouton */
-input, select, button {
-  padding: 8px 16px;
-  border: 1.5px solid var(--or);
-  border-radius: 20px;
-  background: transparent;
-  color: var(--encre);
-  font-family: inherit;
-  font-size: 15px;
-}
-
-input {
-  flex: 1;               /* prend la place restante */
-  max-width: 400px;
-  margin-left: auto;     /* pousse tout vers la droite */
-}
-
-button {
-  cursor: pointer;
-}
-
-/* Bandeau */
-.hero {
-  position: relative;
-  height: 350px;
-  background: var(--marine);
-  color: var(--creme);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.hero h1 {
-  font-family: "Young Serif", serif;
-  font-weight: normal;
-  font-size: 60px;
-  text-transform: uppercase;
-  margin: 0;
-}
-
-/* Étagères de livres (remplies par le JavaScript) */
-.shelf {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 74px;
-  display: flex;
-  align-items: flex-end;
-  gap: 3px;
-  padding: 0 15px;
-  border-bottom: 5px solid var(--or);
-}
-
-.shelf-top {
-  top: 0;
-}
-
-.shelf-bottom {
-  bottom: 0;
-}
-
-.book {
-  border-radius: 2px 2px 0 0;
 }
 
 /* Membres */
@@ -138,12 +51,20 @@ button {
   border-radius: 50%;
   border: 4px solid var(--creme);
   box-shadow: 0 0 0 1.5px var(--encre);
+  overflow: hidden;
+}
+
+.sticker img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* fills the circle without stretching the photo */
+  border-radius: 50%;
 }
 
 .member h2 {
   margin: 0 0 6px;
-  font-family: "Young Serif", serif;
-  font-weight: normal;
+  font-family: var(--font-heading);
+  font-weight: 600;
   font-size: 26px;
   color: var(--marine);
 }
@@ -174,22 +95,42 @@ button {
   padding: 40px 0;
 }
 
+/* Pied de page */
+footer {
+  padding: 24px 20px;
+  text-align: center;
+  color: var(--creme);
+  background: var(--marine);
+  border-top: 3px solid var(--or);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+}
+
+.footer-links a {
+  padding: 4px 0;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.footer-links a:hover,
+.footer-links a.active {
+  border-bottom-color: var(--or);
+}
+
+footer p {
+  margin: 12px 0 0;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
 /* ===== Mobile ===== */
 @media (max-width: 600px) {
-  header {
-    flex-wrap: wrap;
-    padding: 12px 15px;
-  }
-
-  input {
-    flex-basis: 100%;
-    max-width: none;
-  }
-
-  .hero h1 {
-    font-size: 36px;
-  }
-
   .member {
     gap: 14px;
   }
